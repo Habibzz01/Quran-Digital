@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+   <form name="kontak" data-netlify="true" data-netlify-recaptcha="true">
+  </form>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Al Qur'an Digital - Xbibz Official</title>
+    <link rel="icon" type="image/svg+xml" href="myquran.jpeg">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-book-quran"></i>
+                    <span>Al Qur'an Digital</span>
+                    <small>Xbibz Official</small>
+                </div>
+                <nav class="nav">
+                    <button class="nav-btn active" data-section="quran">
+                        <i class="fas fa-book-open"></i>
+                        <span>Al Qur'an</span>
+                    </button>
+                    <button class="nav-btn" data-section="hafalan">
+                        <i class="fas fa-heart"></i>
+                        <span>Hafalan</span>
+                    </button>
+                    <button class="nav-btn" data-section="sholat">
+                        <i class="fas fa-clock"></i>
+                        <span>Waktu Sholat</span>
+                    </button>
+                    <button class="nav-btn" data-section="kiblat">
+                        <i class="fas fa-compass"></i>
+                        <span>Arah Kiblat</span>
+                    </button>
+                </nav>
+                <div class="header-actions">
+                    <button class="theme-toggle" id="themeToggle">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="settings-btn" id="settingsBtn">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main">
+        <!-- Al Qur'an Section -->
+        <section class="section active" id="quran-section">
+            <div class="container">
+                <div class="quran-header">
+                    <h1>Al Qur'an Al Kareem</h1>
+                    <div class="search-container">
+                        <input type="text" id="searchInput" placeholder="Cari surah atau ayat...">
+                        <i class="fas fa-search"></i>
+                    </div>
+                </div>
+                
+                <div class="surah-list" id="surahList">
+                    <!-- Surah list akan dimuat di sini -->
+                </div>
+
+                <div class="ayah-viewer" id="ayahViewer" style="display: none;">
+                    <div class="ayah-header">
+                        <button class="back-btn" id="backBtn">
+                            <i class="fas fa-arrow-left"></i>
+                            Kembali
+                        </button>
+                        <div class="surah-info">
+                            <h2 id="currentSurahName"></h2>
+                            <p id="currentSurahInfo"></p>
+                        </div>
+                        <div class="ayah-controls">
+                            <button class="control-btn" id="playBtn">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <button class="control-btn" id="settingsAyahBtn">
+                                <i class="fas fa-cog"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="ayah-content" id="ayahContent">
+                        <!-- Ayat-ayat akan dimuat di sini -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Hafalan Section -->
+        <section class="section" id="hafalan-section">
+            <div class="container">
+                <div class="hafalan-header">
+                    <h1>Hafalan Saya</h1>
+                    <button class="add-hafalan-btn" id="addHafalanBtn">
+                        <i class="fas fa-plus"></i>
+                        Tambah Hafalan
+                    </button>
+                </div>
+                
+                <div class="hafalan-stats">
+                    <div class="stat-card">
+                        <i class="fas fa-book"></i>
+                        <div>
+                            <h3 id="totalHafalan">0</h3>
+                            <p>Total Hafalan</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-check-circle"></i>
+                        <div>
+                            <h3 id="hafalanSelesai">0</h3>
+                            <p>Selesai</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <h3 id="hafalanProses">0</h3>
+                            <p>Dalam Proses</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hafalan-list" id="hafalanList">
+                    <!-- Daftar hafalan akan dimuat di sini -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Waktu Sholat Section -->
+        <section class="section" id="sholat-section">
+            <div class="container">
+                <div class="sholat-header">
+                    <h1>Waktu Sholat</h1>
+                    <div class="location-info">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span id="currentLocation">Mendeteksi lokasi...</span>
+                    </div>
+                </div>
+
+                <div class="prayer-times" id="prayerTimes">
+                    <!-- Waktu sholat akan dimuat di sini -->
+                </div>
+
+                <div class="next-prayer" id="nextPrayer">
+                    <!-- Sholat berikutnya akan ditampilkan di sini -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Kiblat Section -->
+        <section class="section" id="kiblat-section">
+            <div class="container">
+                <div class="kiblat-header">
+                    <h1>Arah Kiblat</h1>
+                    <p>Gunakan kompas untuk menentukan arah kiblat dari lokasi Anda</p>
+                </div>
+
+                <div class="compass-container">
+                    <div class="compass" id="compass">
+                        <div class="compass-needle" id="compassNeedle">
+                            <i class="fas fa-location-arrow"></i>
+                        </div>
+                        <div class="compass-direction">
+                            <span class="direction north">N</span>
+                            <span class="direction east">E</span>
+                            <span class="direction south">S</span>
+                            <span class="direction west">W</span>
+                        </div>
+                        <div class="kaaba-direction" id="kaabaDirection">
+                            <i class="fas fa-kaaba"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="kiblat-info">
+                    <div class="info-card">
+                        <h3>Arah Kiblat</h3>
+                        <p id="kiblatDegree">-°</p>
+                    </div>
+                    <div class="info-card">
+                        <h3>Jarak ke Makkah</h3>
+                        <p id="distanceToMakkah">- km</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <!-- Settings Modal -->
+    <div class="modal" id="settingsModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Pengaturan</h2>
+                <button class="close-btn" data-modal="settingsModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-group">
+                    <h3>Tampilan</h3>
+                    <div class="setting-item">
+                        <label>Ukuran Font Arab</label>
+                        <input type="range" id="arabicFontSize" min="16" max="32" value="24">
+                        <span id="arabicFontSizeValue">24px</span>
+                    </div>
+                    <div class="setting-item">
+                        <label>Ukuran Font Terjemahan</label>
+                        <input type="range" id="translationFontSize" min="12" max="20" value="16">
+                        <span id="translationFontSizeValue">16px</span>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <h3>Audio</h3>
+                    <div class="setting-item">
+                        <label>Qari</label>
+                        <select id="qariSelect">
+                            <option value="1">Mishary Rashid Al Afasy</option>
+                            <option value="2">Abu Bakr Al Shatri</option>
+                            <option value="3">Nasser Al Qatami</option>
+                            <option value="4">Yasser Al Dosari</option>
+                            <option value="5">Hani Ar Rifai</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="setting-group">
+                    <h3>Data</h3>
+                    <button class="export-btn" id="exportDataBtn">
+                        <i class="fas fa-download"></i>
+                        Export Data Hafalan
+                    </button>
+                    <input type="file" id="importDataInput" accept=".json" style="display: none;">
+                    <button class="import-btn" id="importDataBtn">
+                        <i class="fas fa-upload"></i>
+                        Import Data Hafalan
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add Hafalan Modal -->
+    <div class="modal" id="addHafalanModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Tambah Hafalan</h2>
+                <button class="close-btn" data-modal="addHafalanModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Pilih Surah</label>
+                    <select id="hafalanSurahSelect">
+                        <!-- Options akan dimuat dari API -->
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Ayat Mulai</label>
+                    <input type="number" id="hafalanAyatMulai" min="1" value="1">
+                </div>
+                <div class="form-group">
+                    <label>Ayat Selesai</label>
+                    <input type="number" id="hafalanAyatSelesai" min="1" value="1">
+                </div>
+                <div class="form-group">
+                    <label>Target Selesai</label>
+                    <input type="date" id="hafalanTarget">
+                </div>
+                <div class="form-group">
+                    <label>Catatan</label>
+                    <textarea id="hafalanCatatan" placeholder="Catatan tambahan..."></textarea>
+                </div>
+                <button class="save-btn" id="saveHafalanBtn">
+                    <i class="fas fa-save"></i>
+                    Simpan Hafalan
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tafsir Modal -->
+    <div class="modal" id="tafsirModal">
+        <div class="modal-content large">
+            <div class="modal-header">
+                <h2 id="tafsirTitle">Tafsir</h2>
+                <button class="close-btn" data-modal="tafsirModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="tafsir-content" id="tafsirContent">
+                    <!-- Tafsir akan dimuat di sini -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Memuat...</p>
+        </div>
+    </div>
+
+    <!-- Audio Player -->
+    <audio id="audioPlayer" preload="none"></audio>
+
+    <!-- Scripts -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
+
