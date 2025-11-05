@@ -69,20 +69,7 @@ Website Al Qur'an Digital yang lengkap dengan berbagai fitur modern dan responsi
 
 ## 🔧 Konfigurasi Firebase
 
-Website ini menggunakan Firebase Realtime Database dengan konfigurasi:
-
-```javascript
-const firebaseConfig = {
-    apiKey: "AIzaSyAk-0bfLE8m00HMHGR4HFctW58KRWi_Psw",
-    authDomain: "xbibz-tools.firebaseapp.com",
-    databaseURL: "https://xbibz-tools-default-rtdb.asia-southeast1.firebasedatabase.app",
-    projectId: "xbibz-tools",
-    storageBucket: "xbibz-tools.firebasestorage.app",
-    messagingSenderId: "728866559765",
-    appId: "1:728866559765:web:c44d19112638a86a377b1c"
-};
-```
-
+Website ini menggunakan Firebase Realtime Database
 ## 🎯 Fitur Unggulan
 
 ### 🎨 Animasi & Interaksi
